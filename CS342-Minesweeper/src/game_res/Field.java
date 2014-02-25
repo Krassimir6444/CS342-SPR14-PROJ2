@@ -1,4 +1,4 @@
-package resources;
+package game_res;
 
 import java.util.*;
 

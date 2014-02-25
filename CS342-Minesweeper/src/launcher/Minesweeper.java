@@ -1,4 +1,7 @@
-package resources;
+package launcher;
+
+import java.util.Scanner;
+import game_res.*;
 
 public class Minesweeper {
 
@@ -11,8 +14,8 @@ public class Minesweeper {
 		field.generateUndiscovered();
 		field.generateDiscovered();
 		gameState = State.Playing;
-		
 	}
+	
 	public void onLeftClick(Tile t)
 	{
 		if (gameState != State.Playing || t.getMark() == Tile.MarkState.flagged)
@@ -41,7 +44,7 @@ public class Minesweeper {
 		t.changeMark();
 	}
 	
-	public static void main()
+	public static void main(String[] args)
 	{
 		Minesweeper game = new Minesweeper();
 	}
