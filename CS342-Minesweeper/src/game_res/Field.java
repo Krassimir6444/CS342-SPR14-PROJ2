@@ -31,13 +31,12 @@ public class Field extends JFrame implements ActionListener{
 		        container.add(field[x][y]);
 			}
 		}
-		
-		setSize(750,750);
+		setSize(500,500);
 	    setVisible(true);
 	}
 
     public void actionPerformed(ActionEvent event) { 
-
+    	container.validate();
     }
 	
 	public void generateUndiscovered() {

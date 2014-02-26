@@ -18,7 +18,7 @@ public class Minesweeper {
 	
 	public static void main(String[] args)
 	{
-		Minesweeper game = new Minesweeper();
+		Minesweeper application = new Minesweeper();
 	}
 	
 	public void onLeftClick(Tile t)

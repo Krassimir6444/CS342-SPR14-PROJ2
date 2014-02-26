@@ -1,7 +1,8 @@
 package game_res;
 
 import java.awt.*;
-
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Tile extends JButton {
@@ -13,15 +14,13 @@ public class Tile extends JButton {
 	private int x,y;
 	private int value;
 	
-	static Icon unmarked = new ImageIcon("unmarked.gif");
-	static Icon flagged = new ImageIcon("flagged.gif");
-	static Icon questioned = new ImageIcon("questioned.gif");
-	
-	
 	public Tile(int _x, int _y) {
+		super();
+		try {
+		    Image icon = ImageIO.read(getClass().getResource("unmarked.gif"));
+		    this.setIcon(new ImageIcon(icon));
+		  } catch (IOException ex) { }
 		
-		super(unmarked);
-		setIcon(unmarked);
 		bomb = false;
 		openState = OpenState.unopened;
 		markState = MarkState.unmarked;
@@ -38,12 +37,27 @@ public class Tile extends JButton {
 	}
 
 	public void changeMark() {
-		if (this.markState == MarkState.unmarked)
+		if (this.markState == MarkState.unmarked) {
 			this.markState = MarkState.flagged;
-		else if (this.markState == MarkState.flagged)
+			try {
+			    Image icon = ImageIO.read(getClass().getResource("flagged.gif"));
+			    this.setIcon(new ImageIcon(icon));
+			  } catch (IOException ex) { }
+		}
+		else if (this.markState == MarkState.flagged) {
 			this.markState = MarkState.questioned;
-		else if (this.markState == MarkState.questioned)
+			try {
+			    Image icon = ImageIO.read(getClass().getResource("questioned.gif"));
+			    this.setIcon(new ImageIcon(icon));
+			  } catch (IOException ex) { }
+		}
+		else if (this.markState == MarkState.questioned) {
 			this.markState = MarkState.unmarked;
+			try {
+			    Image icon = ImageIO.read(getClass().getResource("unmarked.gif"));
+			    this.setIcon(new ImageIcon(icon));
+			  } catch (IOException ex) { }
+		}
 	}
 
 	public void setValue(int _value) {
