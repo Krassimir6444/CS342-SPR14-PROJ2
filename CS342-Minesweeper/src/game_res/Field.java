@@ -3,41 +3,63 @@ package game_res;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class Field extends JFrame implements ActionListener{
+public class Field extends JFrame implements ActionListener {
 	private Tile field[][];
 	private int discovered_bombs;
 	private Container container;
 	private GridLayout gridField;
+	private GridLayout testing;
+	private boolean toggle = true;
+	public int x, y;
 
 	public Field() {
 		super("Minesweeper");
 		
 		// setup layout
 		gridField = new GridLayout(10,10);
+		testing = new GridLayout(10,10,5,5);
 		
 		// get content pane and set its layout
 	    container = getContentPane();
 	    container.setLayout(gridField);
+	    
+	    TileHandler handler = new TileHandler();
 		
 		field = new Tile[10][10];
-		int x, y;
 		for(x=0; x<10; x++) {
 			for(y=0; y<10; y++) {
 				field[x][y] = new Tile(x,y);
-				field[x][y].addActionListener(this);
+				field[x][y].addActionListener(handler);
 		        container.add(field[x][y]);
 			}
 		}
 		setSize(500,500);
 	    setVisible(true);
 	}
+	
+	// just to satisfy compiler, real actionPerformed below
+	public void actionPerformed(ActionEvent event) { }
+	
+	// inner class for tile event handling
+	private class TileHandler implements ActionListener {
 
-    public void actionPerformed(ActionEvent event) { 
-    	container.validate();
-    }
+        // handle tile click event
+        public void actionPerformed(ActionEvent event) {
+        	
+        	Tile tempField = (Tile) event.getSource();
+        	int xPos = tempField.getX();
+        	int yPos = tempField.getY();
+        	tempField.changeMark();
+        	
+            container.validate();
+        }
+
+	} // end private inner class TileHandler
 	
 	public void generateUndiscovered() {
 
@@ -124,4 +146,5 @@ public class Field extends JFrame implements ActionListener{
 		}
 		return true;
 	}
+	
 }

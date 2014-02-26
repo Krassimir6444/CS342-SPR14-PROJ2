@@ -1,13 +1,19 @@
 package launcher;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Scanner;
+import javax.swing.JFrame;
 import game_res.*;
 
-public class Minesweeper {
-
+public class Minesweeper extends JFrame {
+	private static final long serialVersionUID = -8691180141632282446L;
+	
 	private Field field;
-	public enum State {Playing, Loss, Won};
 	private State gameState;
+	public enum State {Playing, Loss, Won};
+	private int xPos, yPos;
 	
 	public Minesweeper() {
 		field = new Field();
@@ -19,6 +25,7 @@ public class Minesweeper {
 	public static void main(String[] args)
 	{
 		Minesweeper application = new Minesweeper();
+		application.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
 	
 	public void onLeftClick(Tile t)
@@ -49,8 +56,11 @@ public class Minesweeper {
 		t.changeMark();
 	}
 	
+	/*
 	public State getState()
 	{
 		return this.gameState;
 	}
+	*/
+
 }
