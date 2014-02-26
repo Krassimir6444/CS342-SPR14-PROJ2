@@ -1,26 +1,45 @@
 package game_res;
 
 import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
 
-public class Field {
+import javax.swing.*;
+
+public class Field extends JFrame implements ActionListener{
 	private Tile field[][];
 	private int discovered_bombs;
+	private Container container;
+	private GridLayout gridField;
 
 	public Field() {
+		super("Minesweeper");
+		
+		// setup layout
+		gridField = new GridLayout(10,10);
+		
+		// get content pane and set its layout
+	    container = getContentPane();
+	    container.setLayout(gridField);
+		
 		field = new Tile[10][10];
-
 		int x, y;
-		x = 0;
-		while (x < 10) {
-			y = 0;
-			while (y < 10) {
-				field[x][y] = new Tile(x, y);
-				y++;
+		for(x=0; x<10; x++) {
+			for(y=0; y<10; y++) {
+				field[x][y] = new Tile(x,y);
+				field[x][y].addActionListener(this);
+		        container.add(field[x][y]);
 			}
-			x++;
 		}
+		
+		setSize(750,750);
+	    setVisible(true);
 	}
 
+    public void actionPerformed(ActionEvent event) { 
+
+    }
+	
 	public void generateUndiscovered() {
 
 		Random rand = new Random();

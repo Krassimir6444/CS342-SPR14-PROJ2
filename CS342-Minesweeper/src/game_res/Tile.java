@@ -1,34 +1,34 @@
 package game_res;
 
 import java.awt.*;
+
 import javax.swing.*;
 
 public class Tile extends JButton {
-
 	private boolean bomb;
-
-	public enum OpenState {
-		unopened, opened
-	};
-
-	public enum MarkState {
-		unmarked, flagged, questioned
-	};
-
+	public enum OpenState { unopened, opened };
+    public enum MarkState { unmarked, flagged, questioned };
 	private OpenState openState;
 	private MarkState markState;
-	private int x;
-	private int y;
+	private int x,y;
 	private int value;
-
+	
+	static Icon unmarked = new ImageIcon("unmarked.gif");
+	static Icon flagged = new ImageIcon("flagged.gif");
+	static Icon questioned = new ImageIcon("questioned.gif");
+	
+	
 	public Tile(int _x, int _y) {
+		
+		super(unmarked);
+		setIcon(unmarked);
 		bomb = false;
 		openState = OpenState.unopened;
 		markState = MarkState.unmarked;
 		x = _x;
 		y = _y;
 	}
-
+	
 	public void setBomb() {
 		this.bomb = true;
 	}

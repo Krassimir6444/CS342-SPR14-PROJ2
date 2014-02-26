@@ -16,6 +16,11 @@ public class Minesweeper {
 		gameState = State.Playing;
 	}
 	
+	public static void main(String[] args)
+	{
+		Minesweeper game = new Minesweeper();
+	}
+	
 	public void onLeftClick(Tile t)
 	{
 		if (gameState != State.Playing || t.getMark() == Tile.MarkState.flagged)
@@ -42,11 +47,6 @@ public class Minesweeper {
 		if (t.checkOpen() == true)
 			return;
 		t.changeMark();
-	}
-	
-	public static void main(String[] args)
-	{
-		Minesweeper game = new Minesweeper();
 	}
 	
 	public State getState()
