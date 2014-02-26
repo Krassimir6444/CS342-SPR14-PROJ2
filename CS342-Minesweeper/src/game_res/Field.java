@@ -3,18 +3,14 @@ package game_res;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class Field extends JFrame implements ActionListener {
+// implementing just in case
+public class Field extends JFrame {
 	private Tile field[][];
 	private int discovered_bombs;
 	private Container container;
 	private GridLayout gridField;
-	private GridLayout testing;
-	private boolean toggle = true;
 	public int x, y;
 
 	public Field() {
@@ -22,7 +18,6 @@ public class Field extends JFrame implements ActionListener {
 		
 		// setup layout
 		gridField = new GridLayout(10,10);
-		testing = new GridLayout(10,10,5,5);
 		
 		// get content pane and set its layout
 	    container = getContentPane();
@@ -30,35 +25,84 @@ public class Field extends JFrame implements ActionListener {
 	    
 	    TileHandler handler = new TileHandler();
 		
+	    
 		field = new Tile[10][10];
 		for(x=0; x<10; x++) {
-			for(y=0; y<10; y++) {
-				field[x][y] = new Tile(x,y);
-				field[x][y].addActionListener(handler);
+		   	for(y=0; y<10; y++) {
+			   	field[x][y] = new Tile(x,y);
+				field[x][y].addMouseListener(handler);
 		        container.add(field[x][y]);
+		        //container.show(false);
 			}
 		}
 		setSize(500,500);
 	    setVisible(true);
 	}
 	
-	// just to satisfy compiler, real actionPerformed below
-	public void actionPerformed(ActionEvent event) { }
-	
 	// inner class for tile event handling
-	private class TileHandler implements ActionListener {
+	private class TileHandler implements MouseListener {
 
         // handle tile click event
-        public void actionPerformed(ActionEvent event) {
+        public void mouseClicked(MouseEvent event) {
         	
         	Tile tempField = (Tile) event.getSource();
-        	int xPos = tempField.getX();
-        	int yPos = tempField.getY();
-        	tempField.changeMark();
+        	//int xPos = tempField.getX();
+        	//int yPos = tempField.getY();
         	
-            container.validate();
+        	// left button
+        	if(event.getButton() == MouseEvent.BUTTON1) {
+        		// if tile was not previously opened...
+        		if(!tempField.checkOpen()) {
+        			// and the tile is not flagged or questioned...
+        			if( tempField.getMark() == "unmarked") {
+        				// the tile contained a hidden bomb
+        				if( tempField.checkForBomb() == true) {
+        					// TODO: eventually change the icon of all tiles with bombs to exploded bombs
+        					// and end game.
+        					container.validate();
+        					System.out.println("Bomb...end game");
+        				}
+        				// the tile was clear, expand neighboring tiles
+        				else {
+        					// TODO: implement the recursive open method, and (maybe included in method?)
+        					// display the neighboring bombs
+        				}
+        			}
+        		}
+        	}
+        	
+        	// middle button click
+        	if(event.getButton() == MouseEvent.BUTTON2) {
+        		// not used in minesweeper?
+        	}
+        	
+        	// right button click
+        	if(event.getButton() == MouseEvent.BUTTON3) {	
+        		// if tile was not previously opened
+        		if(!tempField.checkOpen()) {
+        		   // toggle the tiles mark	
+        		   tempField.changeMark();
+        		   container.validate();
+        	    }
+        	}
         }
 
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO highlight the tile
+		}
+
+		public void mouseExited(MouseEvent arg0) {
+			// TODO un-highlight the tile
+		}
+
+		public void mousePressed(MouseEvent arg0) {
+			// not used in minesweeper	
+		}
+
+		public void mouseReleased(MouseEvent arg0) {
+			// not used in minesweeper	
+		}
+		
 	} // end private inner class TileHandler
 	
 	public void generateUndiscovered() {

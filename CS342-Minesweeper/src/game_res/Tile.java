@@ -32,8 +32,11 @@ public class Tile extends JButton {
 		this.bomb = true;
 	}
 
-	public MarkState getMark() {
-		return markState;
+	public String getMark() {
+		if(this.markState == MarkState.unmarked) { return "unmarked"; }
+		if(this.markState == MarkState.flagged) { return "flagged"; }
+		if(this.markState == MarkState.questioned) { return "questioned"; }
+		return "default";
 	}
 
 	public void changeMark() {

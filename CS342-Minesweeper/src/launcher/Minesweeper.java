@@ -30,7 +30,7 @@ public class Minesweeper extends JFrame {
 	
 	public void onLeftClick(Tile t)
 	{
-		if (gameState != State.Playing || t.getMark() == Tile.MarkState.flagged)
+		if (gameState != State.Playing || t.getMark() == "flagged")
 			return;
 	
 		if (t.checkForBomb() == true) {
