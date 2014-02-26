@@ -66,6 +66,7 @@ public class Field extends JFrame {
         				else {
         					// TODO: implement the recursive open method, and (maybe included in method?)
         					// display the neighboring bombs
+        					container.validate();
         				}
         			}
         		}

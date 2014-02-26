@@ -62,16 +62,26 @@ public class Tile extends JButton {
 			  } catch (IOException ex) { }
 		}
 	}
-
+	
 	public void setValue(int _value) {
 		value = _value;
 	}
 
 	public boolean checkForBomb() {
-		if (this.bomb == true)
+		if (this.bomb == true) {
+			try {
+			    Image icon = ImageIO.read(getClass().getResource("exploded.gif"));
+			    this.setIcon(new ImageIcon(icon));
+			  } catch (IOException ex) { }
 			return true; // send to explode
-		else
-			return false;
+		}
+		else {
+			try {
+			    Image icon = ImageIO.read(getClass().getResource("opened.gif"));
+			    this.setIcon(new ImageIcon(icon));
+			  } catch (IOException ex) { }
+			return false; // open the tile
+		}
 	}
 
 	public int getX() {
