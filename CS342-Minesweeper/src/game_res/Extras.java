@@ -40,17 +40,18 @@ public class Extras extends JFrame {
 	    containerE.add(reset,BorderLayout.CENTER);
 	    containerE.add(timer,BorderLayout.EAST);
 	    
-
 	    int delay = 1000;
 	    timeClock = new Timer(delay,new TimerHandler() );
 	    timeClock.start();
 	}
 
+	// can't get other classes to call this
 	public void decrementBombs() {
 		bombCount--;
 		bombs.setText("   Bombs left: " + bombCount);
 	}
 	
+	// can't get other classes to call this
 	public void incrementBombs() {
 		bombCount++;
 		bombs.setText("   Bombs left: " + bombCount);
@@ -62,13 +63,17 @@ public class Extras extends JFrame {
 	    public void actionPerformed(ActionEvent event) {
 	    	JOptionPane.showMessageDialog(Extras.this,
 	            "You pressed: " + event.getActionCommand() );
-	    	
 	    }
+	}
+	
+	// can't get other classes to call this
+	public void stopTimer() {
+		timeClock.stop();
 	}
 	
     // inner class for timer event handling
     private class TimerHandler implements ActionListener {
-       // handle adding time each second
+       // accumulates time between events (every second)
        public void actionPerformed( ActionEvent event ) {
     	   // very weird but works, change if see fit
     	   timeAccumulator += timeClock.getDelay() / 1000;

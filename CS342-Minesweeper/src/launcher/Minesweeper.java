@@ -34,8 +34,10 @@ public class Minesweeper extends JFrame {
 		
 		field.generateUndiscovered();
 		field.generateDiscovered();
+		
+		field.reinitializeTiles();
 		gameState = State.Playing;
-
+		field.reinitializeTiles();
 	}
 	
 	public static void main(String[] args)
@@ -44,6 +46,7 @@ public class Minesweeper extends JFrame {
 		application.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
 	
+	// can't get other classes to call this
 	public void restart() {
 		this.dispose();
 		new Minesweeper();

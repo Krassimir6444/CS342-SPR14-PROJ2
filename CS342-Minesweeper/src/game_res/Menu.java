@@ -2,12 +2,8 @@ package game_res;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
 
-import launcher.Minesweeper;
-
-// implementing just in case
 public class Menu extends JFrame {
 	
 	private Container containerM;
@@ -102,9 +98,7 @@ public class Menu extends JFrame {
 	    menuBar.add(helpMenu); 
 	    
 	    containerM.add(menuBar);
-	    //setSize(50,50);
-	    //setVisible(true);
-
+	    
 	}
 	
 	public Container getContainer() {

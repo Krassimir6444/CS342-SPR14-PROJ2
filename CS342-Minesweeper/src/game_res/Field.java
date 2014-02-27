@@ -3,12 +3,13 @@ package game_res;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
-// implementing just in case
 public class Field extends JFrame {
 	private Tile field[][];
-	private int discovered_bombs;
+	//private int discovered_bombs;
 	private Container containerF;
 	private GridLayout gridField;
 	public int x, y;
@@ -33,8 +34,6 @@ public class Field extends JFrame {
 		        containerF.add(field[x][y]);
 			}
 		}
-		//setSize(500,500);
-	    //setVisible(true);
 	}
 	
 	// inner class for tile event handling
@@ -55,17 +54,17 @@ public class Field extends JFrame {
         			if( tempField.getMark() == "unmarked") {
         				// the tile contained a hidden bomb
         				if( tempField.checkForBomb() ) {
-        					// TODO: show all unfound bombs, replay option
+        					// TODO: replay option, stop timer
+        					
         					tempField.showAllBombs(field);
         					tempField.open();
-        					//containerF.validate();
         					JOptionPane.showMessageDialog(tempField,"You've clicked on a mine... Game Over!");
         					System.exit(1);
         				}
         				// the tile was clear, expand neighboring tiles
         				else { recursiveOpen(xPos,yPos); }
         				
-        				// TODO: replay option
+        				// TODO: replay option, stop timer
              		    if(checkWin()) {
              			   JOptionPane.showMessageDialog(tempField,"You've cleared the minefield... You Survive!");
              			   System.exit(1);
@@ -86,7 +85,7 @@ public class Field extends JFrame {
         		   // toggle the tiles mark	
         		   tempField.changeMark();
         		   
-        		   // TODO: replay option
+        		   // TODO: replay option, stop timer
         		   if(checkWin()) {
         			   JOptionPane.showMessageDialog(tempField,"You've cleared the minefield... You Survive!");
         			   System.exit(1);
@@ -197,6 +196,19 @@ public class Field extends JFrame {
 			x++;
 		}
 		return true;
+	}
+	
+	// x2 roundabout way to make the tiles appear without needing to hover over them first
+	public void reinitializeTiles() {
+		for(x=0; x<10; x++) {
+		   	for(y=0; y<10; y++) {
+		   		Tile temp = field[x][y];
+		   		try {
+				    Image icon = ImageIO.read(getClass().getResource("unmarked.gif"));
+				    temp.setIcon(new ImageIcon(icon));
+				  } catch (IOException ex) { }
+		   	}
+		}
 	}
 	
 	public Container getContainer() {
