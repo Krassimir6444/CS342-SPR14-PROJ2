@@ -56,13 +56,14 @@ public class Field extends JFrame {
         				// the tile contained a hidden bomb
         				if( tempField.checkForBomb() ) {
         					// TODO: show all unfound bombs, replay option
+        					tempField.showAllBombs(field);
         					tempField.open();
+        					//containerF.validate();
         					JOptionPane.showMessageDialog(tempField,"You've stepped on a mine... Game Over!");
         					System.exit(1);
         				}
         				// the tile was clear, expand neighboring tiles
         				else {
-        					generateDiscovered();
         					recursiveOpen(xPos,yPos);
         					containerF.validate();
         				}

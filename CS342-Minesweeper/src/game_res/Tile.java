@@ -153,4 +153,19 @@ public class Tile extends JButton {
 	public int getVal() {
 		return this.value;
 	}
+	
+	public void showAllBombs(Tile[][] tempField) {
+		int x, y;
+		for(x=0; x<10; x++) {
+			for(y=0; y<10; y++) {
+				if(tempField[x][y].checkForBomb()) {
+					try {
+					Image icon = ImageIO.read(getClass().getResource("bomb.gif"));
+			    	tempField[x][y].setIcon(new ImageIcon(icon));
+			  		} catch (IOException ex) { }
+				}
+			}
+		}
+	}
+	
 }
