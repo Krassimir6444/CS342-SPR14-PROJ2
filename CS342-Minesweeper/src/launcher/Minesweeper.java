@@ -35,9 +35,13 @@ public class Minesweeper extends JFrame {
 		field.generateUndiscovered();
 		field.generateDiscovered();
 		
+		// reinitialize twice, before and after, to help load the tiles
 		field.reinitializeTiles();
 		gameState = State.Playing;
 		field.reinitializeTiles();
+		
+		// prevents JFrame from tearing if click on a bomb, moves windows over a bit
+		this.setLocationRelativeTo(getRootPane());
 	}
 	
 	public static void main(String[] args)
