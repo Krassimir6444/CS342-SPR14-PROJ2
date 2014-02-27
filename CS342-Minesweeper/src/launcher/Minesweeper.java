@@ -35,12 +35,18 @@ public class Minesweeper extends JFrame {
 		field.generateUndiscovered();
 		field.generateDiscovered();
 		gameState = State.Playing;
+
 	}
 	
 	public static void main(String[] args)
 	{
 		Minesweeper application = new Minesweeper();
 		application.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+	}
+	
+	public void restart() {
+		this.dispose();
+		new Minesweeper();
 	}
 	
 }

@@ -2,7 +2,10 @@ package game_res;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
+
+import launcher.Minesweeper;
 
 // implementing just in case
 public class Menu extends JFrame {
@@ -51,7 +54,7 @@ public class Menu extends JFrame {
 	       new ActionListener() {  // anonymous inner class
 	 	      // display message dialog when user selects About...
 	    	  public void actionPerformed(ActionEvent event) {
-	 	    		  
+	    		  //Minesweeper.restart();
 	 	      }
 	 	   }  // end anonymous inner class
 	 	); // end call to addActionListener

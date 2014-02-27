@@ -19,6 +19,8 @@ public class Extras extends JFrame {
 	private JLabel timer;
 	private int time = 0;
 	private JButton reset;
+	private Timer timeClock;
+	private int timeAccumulator;
 	
 	public Extras() {
 		extrasLayout = new BorderLayout(15,0);
@@ -32,13 +34,16 @@ public class Extras extends JFrame {
 	    ButtonHandler resetHandler = new ButtonHandler();
 	    reset.addActionListener(resetHandler);
 	    
-	    timer = new JLabel("Timer: " + time + "   ");
-	    // need to implement timer, prof posted some source code
+	    timer = new JLabel("    Timer: " + timeAccumulator + "            ");
 	    
 	    containerE.add(bombs,BorderLayout.WEST);
 	    containerE.add(reset,BorderLayout.CENTER);
 	    containerE.add(timer,BorderLayout.EAST);
 	    
+
+	    int delay = 1000;
+	    timeClock = new Timer(delay,new TimerHandler() );
+	    timeClock.start();
 	}
 
 	public void decrementBombs() {
@@ -57,9 +62,20 @@ public class Extras extends JFrame {
 	    public void actionPerformed(ActionEvent event) {
 	    	JOptionPane.showMessageDialog(Extras.this,
 	            "You pressed: " + event.getActionCommand() );
-	    	// need to reset the game
+	    	
 	    }
 	}
+	
+    // inner class for timer event handling
+    private class TimerHandler implements ActionListener {
+       // handle adding time each second
+       public void actionPerformed( ActionEvent event ) {
+    	   // very weird but works, change if see fit
+    	   timeAccumulator += timeClock.getDelay() / 1000;
+    	   timer.setText("    Timer: " + timeAccumulator + "            ");
+       }
+   } // end private inner class TimerHandler
+
 	
 	public Container getContainer() {
 		return containerE;
