@@ -56,9 +56,10 @@ public class Field extends JFrame {
         			// and the tile is not flagged or questioned...
         			if( tempField.getMark() == "unmarked") {
         				// the tile contained a hidden bomb
-        				if( tempField.checkForBomb() == true) {
+        				if( tempField.checkForBomb() ) {
         					// TODO: eventually change the icon of all tiles with bombs to exploded bombs
         					// and end game.
+        					tempField.open();
         					container.validate();
         					System.out.println("Bomb...end game");
         				}
@@ -66,6 +67,7 @@ public class Field extends JFrame {
         				else {
         					// TODO: implement the recursive open method, and (maybe included in method?)
         					// display the neighboring bombs
+        					tempField.open();
         					container.validate();
         				}
         			}

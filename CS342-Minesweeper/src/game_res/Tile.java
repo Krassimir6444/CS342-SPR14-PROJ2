@@ -68,6 +68,20 @@ public class Tile extends JButton {
 	}
 
 	public boolean checkForBomb() {
+		if (this.bomb == true) { return true; }
+		else { return false; }
+	}
+
+	public int getX() {
+		return this.x;
+	}
+
+	public int getY() {
+		return this.y;
+	}
+
+	public boolean open() {
+		this.openState = OpenState.opened;
 		if (this.bomb == true) {
 			try {
 			    Image icon = ImageIO.read(getClass().getResource("exploded.gif"));
@@ -82,18 +96,6 @@ public class Tile extends JButton {
 			  } catch (IOException ex) { }
 			return false; // open the tile
 		}
-	}
-
-	public int getX() {
-		return this.x;
-	}
-
-	public int getY() {
-		return this.y;
-	}
-
-	public void open() {
-		this.openState = OpenState.opened;
 	}
 
 	public boolean checkOpen() {
