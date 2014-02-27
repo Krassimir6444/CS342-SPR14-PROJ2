@@ -28,6 +28,7 @@ public class Minesweeper extends JFrame {
 		application.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
 	
+	/*
 	public void onLeftClick(Tile t)
 	{
 		if (gameState != State.Playing || t.getMark() == "flagged")
@@ -56,7 +57,6 @@ public class Minesweeper extends JFrame {
 		t.changeMark();
 	}
 	
-	/*
 	public State getState()
 	{
 		return this.gameState;

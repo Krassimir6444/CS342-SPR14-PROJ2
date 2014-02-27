@@ -59,21 +59,23 @@ public class Field extends JFrame {
         			if( tempField.getMark() == "unmarked") {
         				// the tile contained a hidden bomb
         				if( tempField.checkForBomb() ) {
-        					// TODO: eventually change the icon of all tiles with bombs to exploded bombs
-        					// and end game.
+        					// TODO: show all unfound bombs, replay option
         					tempField.open();
         					JOptionPane.showMessageDialog(tempField,"You've stepped on a mine... Game Over!");
         					System.exit(1);
         				}
         				// the tile was clear, expand neighboring tiles
         				else {
-        					// TODO: implement the recursive open method, and (maybe included in method?)
-        					// display the neighboring bombs
-        					//tempField.open();
         					generateDiscovered();
         					recursiveOpen(xPos,yPos);
         					container.validate();
         				}
+        				
+        				// TODO: replay option
+             		   if(checkWin()) {
+             			   JOptionPane.showMessageDialog(tempField,"You've cleared the minefield... You Survive!");
+             			   System.exit(1);
+             		   }
         			}
         		}
         	}
@@ -90,6 +92,12 @@ public class Field extends JFrame {
         		   // toggle the tiles mark	
         		   tempField.changeMark();
         		   container.validate();
+        		   
+        		   // TODO: replay option
+        		   if(checkWin()) {
+        			   JOptionPane.showMessageDialog(tempField,"You've cleared the minefield... You Survive!");
+        			   System.exit(1);
+        		   }
         	    }
         	}
         }
