@@ -3,7 +3,10 @@ package game_res;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
+
+import example_res.ButtonTest;
 
 // implementing just in case
 public class Field extends JFrame {
@@ -46,8 +49,8 @@ public class Field extends JFrame {
         public void mouseClicked(MouseEvent event) {
         	
         	Tile tempField = (Tile) event.getSource();
-        	//int xPos = tempField.getX();
-        	//int yPos = tempField.getY();
+        	int xPos = tempField.getX();
+        	int yPos = tempField.getY();
         	
         	// left button
         	if(event.getButton() == MouseEvent.BUTTON1) {
@@ -60,14 +63,15 @@ public class Field extends JFrame {
         					// TODO: eventually change the icon of all tiles with bombs to exploded bombs
         					// and end game.
         					tempField.open();
-        					container.validate();
-        					System.out.println("Bomb...end game");
+        					JOptionPane.showMessageDialog(tempField,"You Clicked a Mine... You Are Dead");
+        					System.exit(1);
         				}
         				// the tile was clear, expand neighboring tiles
         				else {
         					// TODO: implement the recursive open method, and (maybe included in method?)
         					// display the neighboring bombs
-        					tempField.open();
+        					//tempField.open();
+        					recursiveOpen(xPos,yPos);
         					container.validate();
         				}
         			}

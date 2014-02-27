@@ -26,6 +26,7 @@ public class Tile extends JButton {
 		markState = MarkState.unmarked;
 		x = _x;
 		y = _y;
+		this.setVisible(true);
 	}
 	
 	public void setBomb() {
