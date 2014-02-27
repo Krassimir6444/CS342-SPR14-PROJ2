@@ -3,10 +3,7 @@ package game_res;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
-
-import example_res.ButtonTest;
 
 // implementing just in case
 public class Field extends JFrame {
@@ -26,8 +23,10 @@ public class Field extends JFrame {
 	    container = getContentPane();
 	    container.setLayout(gridField);
 	    
+	    // add the menu to the content pane
+	    Menu gameMenu = new Menu(container);
+	    
 	    TileHandler handler = new TileHandler();
-		
 	    
 		field = new Tile[10][10];
 		for(x=0; x<10; x++) {
