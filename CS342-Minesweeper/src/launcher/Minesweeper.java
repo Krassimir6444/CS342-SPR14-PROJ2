@@ -41,7 +41,7 @@ public class Minesweeper extends JFrame {
 		field.reinitializeTiles();
 		
 		// prevents JFrame from tearing if click on a bomb, moves windows over a bit
-		this.setLocationRelativeTo(getRootPane());
+		this.setLocation(410,100);
 	}
 	
 	public static void main(String[] args)
