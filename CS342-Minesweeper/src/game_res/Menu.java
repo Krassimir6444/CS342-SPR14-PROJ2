@@ -1,29 +1,27 @@
 package game_res;
 
-import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
-
-import example_res.MenuTest;
 
 // implementing just in case
 public class Menu extends JFrame {
 	
-	private JLabel displayLabel;
 	private Container containerM;
+	private JMenuBar menuBar;
 	
 	public Menu() {
 		
 		containerM = getContentPane();
 		
-		JMenu fileMenu = new JMenu("File");
-		fileMenu.setMnemonic('F');
+		JMenu gameMenu = new JMenu("Game");
+		gameMenu.setMnemonic('G');
+		JMenu helpMenu = new JMenu("Help");
+		helpMenu.setMnemonic('H');
 		
-		JMenuItem aboutItem = new JMenuItem("About");
-	    aboutItem.setMnemonic('A');
-	    fileMenu.add(aboutItem);
+		JMenuItem aboutItem = new JMenuItem("HelP");
+	    aboutItem.setMnemonic('P');
+	    helpMenu.add(aboutItem);
 	    
 	    aboutItem.addActionListener(	
 	       new ActionListener() {  // anonymous inner class
@@ -37,9 +35,9 @@ public class Menu extends JFrame {
 	       }  // end anonymous inner class
 	    ); // end call to addActionListener
 	    
-	    JMenuItem exitItem = new JMenuItem("Exit");
+	    JMenuItem exitItem = new JMenuItem("eXit");
 	    exitItem.setMnemonic('X');
-	    fileMenu.add(exitItem);
+	    gameMenu.add(exitItem);
 	    
 	    exitItem.addActionListener(
 	       new ActionListener() {  // anonymous inner class
@@ -51,9 +49,10 @@ public class Menu extends JFrame {
 	    ); // end call to addActionListener
 	    
 	    // create menu bar and attach it to MenuTest window
-	    JMenuBar menuBar = new JMenuBar();  
+	    menuBar = new JMenuBar();  
 	    setJMenuBar(menuBar);  
-	    menuBar.add(fileMenu); 
+	    menuBar.add(gameMenu); 
+	    menuBar.add(helpMenu); 
 	    
 	    containerM.add(menuBar);
 	    //setSize(50,50);
