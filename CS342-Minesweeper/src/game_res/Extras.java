@@ -16,6 +16,8 @@ public class Extras extends JFrame {
 	private BorderLayout extrasLayout;
 	private JLabel bombs;
 	private int bombCount = 10;
+	private JLabel timer;
+	private int time = 0;
 	private JButton reset;
 	
 	public Extras() {
@@ -30,9 +32,12 @@ public class Extras extends JFrame {
 	    ButtonHandler resetHandler = new ButtonHandler();
 	    reset.addActionListener(resetHandler);
 	    
+	    timer = new JLabel("Timer: " + time + "   ");
+	    // need to implement timer, prof posted some source code
+	    
 	    containerE.add(bombs,BorderLayout.WEST);
-	    containerE.add(reset,BorderLayout.CENTER );
-	    //containerE.add(timer ,  BorderLayout.EAST );
+	    containerE.add(reset,BorderLayout.CENTER);
+	    containerE.add(timer,BorderLayout.EAST);
 	    
 	}
 
@@ -52,7 +57,7 @@ public class Extras extends JFrame {
 	    public void actionPerformed(ActionEvent event) {
 	    	JOptionPane.showMessageDialog(Extras.this,
 	            "You pressed: " + event.getActionCommand() );
-	    	//Minesweeper application = new Minesweeper();
+	    	// need to reset the game
 	    }
 	}
 	

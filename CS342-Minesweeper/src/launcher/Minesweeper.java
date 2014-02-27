@@ -43,6 +43,8 @@ public class Minesweeper extends JFrame {
 		application.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
 	
+}
+
 	/*
 	public void onLeftClick(Tile t)
 	{
@@ -78,4 +80,3 @@ public class Minesweeper extends JFrame {
 	}
 	*/
 
-}
