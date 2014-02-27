@@ -9,22 +9,19 @@ import javax.swing.*;
 public class Field extends JFrame {
 	private Tile field[][];
 	private int discovered_bombs;
-	private Container container;
+	private Container containerF;
 	private GridLayout gridField;
 	public int x, y;
 
 	public Field() {
 		super("Minesweeper");
 		
-		// setup layout
+		// setup field layout
 		gridField = new GridLayout(10,10);
 		
 		// get content pane and set its layout
-	    container = getContentPane();
-	    container.setLayout(gridField);
-	    
-	    // add the menu to the content pane
-	    Menu gameMenu = new Menu(container);
+	    containerF = getContentPane();
+	    containerF.setLayout(gridField);
 	    
 	    TileHandler handler = new TileHandler();
 	    
@@ -33,11 +30,11 @@ public class Field extends JFrame {
 		   	for(y=0; y<10; y++) {
 			   	field[x][y] = new Tile(x,y);
 				field[x][y].addMouseListener(handler);
-		        container.add(field[x][y]);
+		        containerF.add(field[x][y]);
 			}
 		}
-		setSize(500,500);
-	    setVisible(true);
+		//setSize(500,500);
+	    //setVisible(true);
 	}
 	
 	// inner class for tile event handling
@@ -67,7 +64,7 @@ public class Field extends JFrame {
         				else {
         					generateDiscovered();
         					recursiveOpen(xPos,yPos);
-        					container.validate();
+        					containerF.validate();
         				}
         				
         				// TODO: replay option
@@ -90,7 +87,7 @@ public class Field extends JFrame {
         		if(!tempField.checkOpen()) {
         		   // toggle the tiles mark	
         		   tempField.changeMark();
-        		   container.validate();
+        		   containerF.validate();
         		   
         		   // TODO: replay option
         		   if(checkWin()) {
@@ -203,6 +200,10 @@ public class Field extends JFrame {
 			x++;
 		}
 		return true;
+	}
+	
+	public Container getContainer() {
+		return containerF;
 	}
 	
 }
