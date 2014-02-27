@@ -59,17 +59,14 @@ public class Field extends JFrame {
         					tempField.showAllBombs(field);
         					tempField.open();
         					//containerF.validate();
-        					JOptionPane.showMessageDialog(tempField,"You've stepped on a mine... Game Over!");
+        					JOptionPane.showMessageDialog(tempField,"You've clicked on a mine... Game Over!");
         					System.exit(1);
         				}
         				// the tile was clear, expand neighboring tiles
-        				else {
-        					recursiveOpen(xPos,yPos);
-        					containerF.validate();
-        				}
+        				else { recursiveOpen(xPos,yPos); }
         				
         				// TODO: replay option
-             		   if(checkWin()) {
+             		    if(checkWin()) {
              			   JOptionPane.showMessageDialog(tempField,"You've cleared the minefield... You Survive!");
              			   System.exit(1);
              		   }
@@ -88,7 +85,6 @@ public class Field extends JFrame {
         		if(!tempField.checkOpen()) {
         		   // toggle the tiles mark	
         		   tempField.changeMark();
-        		   containerF.validate();
         		   
         		   // TODO: replay option
         		   if(checkWin()) {

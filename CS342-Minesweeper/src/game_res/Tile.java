@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+
 public class Tile extends JButton {
 	private boolean bomb;
 	public enum OpenState { unopened, opened };
