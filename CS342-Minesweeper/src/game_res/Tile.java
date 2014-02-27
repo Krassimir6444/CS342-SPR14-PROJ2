@@ -91,10 +91,54 @@ public class Tile extends JButton {
 			return true; // send to explode
 		}
 		else {
-			try {
-			    Image icon = ImageIO.read(getClass().getResource("opened.gif"));
-			    this.setIcon(new ImageIcon(icon));
-			  } catch (IOException ex) { }
+			
+			switch(this.value) {
+			case 0: try {
+			    	Image icon = ImageIO.read(getClass().getResource("opened.gif"));
+			    	this.setIcon(new ImageIcon(icon));
+			  		} catch (IOException ex) { }
+				break;
+			case 1: try {
+			    	Image icon = ImageIO.read(getClass().getResource("opened1.gif"));
+			    	this.setIcon(new ImageIcon(icon));
+					} catch (IOException ex) { }
+				break;
+			case 2: try {
+			    	Image icon = ImageIO.read(getClass().getResource("opened2.gif"));
+			    	this.setIcon(new ImageIcon(icon));
+			  		} catch (IOException ex) { }
+				break;
+			case 3: try {
+			    	Image icon = ImageIO.read(getClass().getResource("opened3.gif"));
+			    	this.setIcon(new ImageIcon(icon));
+			  		} catch (IOException ex) { }
+				break;
+			case 4: try {
+			    	Image icon = ImageIO.read(getClass().getResource("opened4.gif"));
+			    	this.setIcon(new ImageIcon(icon));
+			  		} catch (IOException ex) { }
+				break;
+			case 5: try {
+			    	Image icon = ImageIO.read(getClass().getResource("opened5.gif"));
+			    	this.setIcon(new ImageIcon(icon));
+			  		} catch (IOException ex) { }
+				break;
+			case 6: try {
+			    	Image icon = ImageIO.read(getClass().getResource("opened6.gif"));
+			    	this.setIcon(new ImageIcon(icon));
+			  		} catch (IOException ex) { }
+				break;
+			case 7: try {
+			    	Image icon = ImageIO.read(getClass().getResource("opened7.gif"));
+			    	this.setIcon(new ImageIcon(icon));
+			  		} catch (IOException ex) { }
+				break;
+			case 8: try {
+			    	Image icon = ImageIO.read(getClass().getResource("opened8.gif"));
+			    	this.setIcon(new ImageIcon(icon));
+			  		} catch (IOException ex) { }
+				break;
+			}
 			return false; // open the tile
 		}
 	}

@@ -35,7 +35,6 @@ public class Field extends JFrame {
 			   	field[x][y] = new Tile(x,y);
 				field[x][y].addMouseListener(handler);
 		        container.add(field[x][y]);
-		        //container.show(false);
 			}
 		}
 		setSize(500,500);
@@ -63,7 +62,7 @@ public class Field extends JFrame {
         					// TODO: eventually change the icon of all tiles with bombs to exploded bombs
         					// and end game.
         					tempField.open();
-        					JOptionPane.showMessageDialog(tempField,"You Clicked a Mine... You Are Dead");
+        					JOptionPane.showMessageDialog(tempField,"You've stepped on a mine... Game Over!");
         					System.exit(1);
         				}
         				// the tile was clear, expand neighboring tiles
@@ -71,6 +70,7 @@ public class Field extends JFrame {
         					// TODO: implement the recursive open method, and (maybe included in method?)
         					// display the neighboring bombs
         					//tempField.open();
+        					generateDiscovered();
         					recursiveOpen(xPos,yPos);
         					container.validate();
         				}
