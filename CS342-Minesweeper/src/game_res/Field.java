@@ -67,6 +67,7 @@ public class Field extends JFrame {
         				// TODO: replay option, stop timer
              		    if(checkWin()) {
              			   JOptionPane.showMessageDialog(tempField,"You've cleared the minefield... You Survive!");
+             			   
              			   System.exit(1);
              		   }
         			}

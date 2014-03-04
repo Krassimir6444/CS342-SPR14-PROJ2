@@ -40,7 +40,7 @@ public class Minesweeper extends JFrame {
 		gameState = State.Playing;
 		field.reinitializeTiles();
 		
-		// prevents JFrame from tearing if click on a bomb, moves windows over a bit
+		// centers JFrame, prevents from tearing if get explosion
 		this.setLocation(410,100);
 	}
 	
