@@ -51,7 +51,7 @@ public class Field extends JFrame {
         		// if tile was not previously opened...
         		if(!tempField.checkOpen()) {
         			// and the tile is not flagged or questioned...
-        			if( tempField.getMark() == "unmarked") {
+        			if( (tempField.getMark() == "unmarked") || tempField.getMark() == "questioned") {
         				// the tile contained a hidden bomb
         				if( tempField.checkForBomb() ) {
         					// TODO: replay option, stop timer
