@@ -57,39 +57,3 @@ public class Minesweeper extends JFrame {
 	}
 	
 }
-
-	/*
-	public void onLeftClick(Tile t)
-	{
-		if (gameState != State.Playing || t.getMark() == "flagged")
-			return;
-	
-		if (t.checkForBomb() == true) {
-			t.open();
-			this.gameState = State.Loss;
-			return;
-		}
-		
-		field.recursiveOpen(t.getX(), t.getY());
-		
-		if (field.checkWin())
-		{
-			this.gameState = State.Won;
-		}
-	}
-	
-	public void onRightClick(Tile t)
-	{
-		if (gameState != State.Playing)
-			return;
-		if (t.checkOpen() == true)
-			return;
-		t.changeMark();
-	}
-	
-	public State getState()
-	{
-		return this.gameState;
-	}
-	*/
-
